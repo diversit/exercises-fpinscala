@@ -7,7 +7,7 @@ import org.scalaexercises.definitions._
   * @param name fp_in_scala
   */
 object FPinScalaLibrary extends Library {
-  override def owner = "scala-exercises"
+  override def owner = "diversit"
   override def repository = "exercises-fpinscala"
 
   override def color = Some("#E22D34")
