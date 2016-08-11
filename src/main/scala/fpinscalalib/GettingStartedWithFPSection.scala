@@ -54,17 +54,14 @@ object GettingStartedWithFPSection extends FlatSpec with Matchers with org.scala
     * Try to fix the `loop` function inside `fib` so that it returns the correct values for each case in a tail-recursive
     * way. What should the missing expressions for the trivial case and the recursive call be?
     */
-
-  def fibAssert(res0: Int, res1: Int) {
-    def fib(n: Int): Int = {
-      @annotation.tailrec
-      def loop(n: Int, prev: Int, cur: Int): Int =
-        if (n <= res0) prev
-        else loop(n - res1, cur, prev + cur)
-      loop(n, 0, 1)
+  def fibAssert(res0: Int => Int) {
+    val fib: Int => Int = {
+      res0
     }
 
     fib(5) should be(5)
+
+    (0 to 10).map(fib) shouldBe List(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55)
   }
 
   /**
@@ -216,4 +213,3 @@ object GettingStartedWithFPSection extends FlatSpec with Matchers with org.scala
     compose(g, f)(2) shouldBe res2
   }
 }
-

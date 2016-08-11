@@ -9,8 +9,12 @@ import shapeless.HNil
 
 class GettingStartedWithFPSpec extends Spec with Checkers {
   def `fibonacci asserts` = {
-    implicit val intArbitrary = Arbitrary[Int](Gen.choose(1, 100))
-    check(Test.testSuccess(GettingStartedWithFPSection.fibAssert _, 0 :: 1 :: HNil))
+//    implicit val intArbitrary = Arbitrary[Int](Gen.choose(1, 100))
+    val fib: Int => Int = n => {
+      @annotation.tailrec def loop(i: Int, prev: Int, cur: Int): Int = if (i <= 0) prev else loop(i - 1, cur, prev + cur)
+      loop(n, 0, 1)
+    }
+    check(Test.testSuccess(GettingStartedWithFPSection.fibAssert _, fib :: HNil))
   }
 
   def `isSorted asserts` = {
