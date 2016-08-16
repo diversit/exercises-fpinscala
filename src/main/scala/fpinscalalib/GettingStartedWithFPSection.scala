@@ -54,9 +54,9 @@ object GettingStartedWithFPSection extends FlatSpec with Matchers with org.scala
     * Try to fix the `loop` function inside `fib` so that it returns the correct values for each case in a tail-recursive
     * way. What should the missing expressions for the trivial case and the recursive call be?
     */
-  def fibAssert(res0: Int => Int) {
+  def fibAssert(res0l3: Int => Int) {
     val fib: Int => Int = {
-      res0
+      res0l3
     }
 
     fib(5) should be(5)
@@ -130,7 +130,7 @@ object GettingStartedWithFPSection extends FlatSpec with Matchers with org.scala
     * applying the following anonymous functions to it?
     */
 
-  def isSortedAssert(res0: Boolean, res1: Boolean, res2: Boolean): Unit = {
+  def isSortedAssert(res0s5: Boolean, res1: Boolean, res2: Boolean): Unit = {
     def isSorted[A](as: Array[A], ordering: (A, A) => Boolean): Boolean = {
       @annotation.tailrec
       def go(n: Int): Boolean =
@@ -141,7 +141,7 @@ object GettingStartedWithFPSection extends FlatSpec with Matchers with org.scala
       go(0)
     }
 
-    isSorted(Array(1, 3, 5, 7), (x: Int, y: Int) => x > y) shouldBe res0
+    isSorted(Array(1, 3, 5, 7), (x: Int, y: Int) => x > y) shouldBe res0s5
     isSorted(Array(7, 5, 1, 3), (x: Int, y: Int) => x < y) shouldBe res1
     isSorted(Array("Scala", "Exercises"), (x: String, y: String) => x.length > y.length) shouldBe res2
   }
